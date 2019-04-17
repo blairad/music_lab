@@ -29,11 +29,12 @@ class Album
         @id = result[0]['id'].to_i
     end
 
-    def find(id)
-      sql = "SELECT * FROM album WHERE id =  $1"
-      values = ['id']
-      results = [SqlRunner.run(sql, values)]
-      find_hash = results.first
+    def self.find_by_artist(id)
+      sql = "SELECT * FROM album WHERE artist_id =  $1"
+      values = [id]
+      results = SqlRunner.run(sql, values)
+      find_hash = results.map
+      # binding.pry
       album_list = Album.new(find_hash)
       return album_list
     end
