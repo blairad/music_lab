@@ -44,4 +44,10 @@ class Artist
   #   @id = result[0]['id'].to_i
   # end
 
+  def self.all()
+    sql = "SELECT * FROM music_collection"
+    options = SqlRunner.run(sql)
+    return options.map { |option| Artist.new(option)}
+  end
+
 end
