@@ -31,12 +31,14 @@ class Album
 
     def self.find_by_artist(id)
       sql = "SELECT * FROM album WHERE artist_id =  $1"
-      values = [id]
+      values = [@artist_id]
       results = SqlRunner.run(sql, values)
-      find_hash = results.map
+      find_hash = results.map { |result| Album.new(find_hash) }
       # binding.pry
-      album_list = Album.new(find_hash)
-      return album_list
+      # album_list = Album.new(find_hash)
+      binding.pry
+      return find_hash
+
     end
     #This is the original
     # def save
