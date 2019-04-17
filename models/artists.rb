@@ -45,9 +45,11 @@ class Artist
   # end
 
   def self.all()
-    sql = "SELECT * FROM music_collection"
+    sql = "SELECT * FROM artist"
     options = SqlRunner.run(sql)
-    return options.map { |option| Artist.new(option)}
+    objects = options.map{|record| Artist.new(record)}
+    # return options.map { |option| Artist.new(option)}
+    return objects
   end
 
 end

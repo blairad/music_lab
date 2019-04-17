@@ -14,6 +14,8 @@ album.save()
 album2.save()
 album3.save()
 
-
+# p Artist.all()
+# p Album.all()
+p find.all()
 binding.pry
 nil
