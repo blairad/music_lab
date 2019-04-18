@@ -29,17 +29,6 @@ class Album
         @id = result[0]['id'].to_i
     end
 
-    def self.find_by_artist(id)
-      sql = "SELECT * FROM album WHERE artist_id =  $1"
-      values = [@artist_id]
-      results = SqlRunner.run(sql, values)
-      find_hash = results.map { |result| Album.new(find_hash) }
-      # binding.pry
-      # album_list = Album.new(find_hash)
-      binding.pry
-      return find_hash
-
-    end
     #This is the original
     # def save
     #     db = PG.connect( {dbname: 'music_collection', host: 'localhost'} )
@@ -60,12 +49,26 @@ class Album
     #     @id = result[0]['id'].to_i
     # end
 
-    def self.all()
-      sql = "SELECT * FROM album"
-      options = SqlRunner.run(sql)
-      objects = options.map{|record| Album.new(record)}
-      # return options.map { |option| Artist.new(option)}
-      return objects
-    end
+    # def self.find_by_artist(id)
+    #   sql = "SELECT * FROM album WHERE artist_id =  $1"
+    #   values = [@artist_id]
+    #   results = SqlRunner.run(sql, values)
+    #   find_hash = results.map { |result| Album.new(find_hash) }
+    #   # binding.pry
+    #   # album_list = Album.new(find_hash)
+    #   binding.pry
+    #   return find_hash
+    #
+    # end
+
+
+
+    # def self.all()
+    #   sql = "SELECT * FROM album"
+    #   options = SqlRunner.run(sql)
+    #   objects = options.map{|record| Album.new(record)}
+    #   # return options.map { |option| Artist.new(option)}
+    #   return objects
+    # end
 
 end
